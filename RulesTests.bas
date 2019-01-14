@@ -26,7 +26,7 @@ Sub FindInFolders_returns_reference_to_a_folder_that_matches_name()
     
     ' arrange
     Dim Folder As Outlook.MAPIFolder
-    Dim FolderName As String: FolderName = "RITM0071385"
+    Dim FolderName As String: FolderName = "RITM0123456"
     
     'act
     Set Folder = Find_or_Create_Folder(FolderName)
@@ -77,7 +77,7 @@ Sub Find_or_Create_Folder_returns_an_existing_folder()
     
     ' arrange
     Dim Folder As Outlook.MAPIFolder
-    Dim FolderName As String: FolderName = "RITM0071385"
+    Dim FolderName As String: FolderName = "RITM0123456"
 
     'act
     Set Folder = Find_or_Create_Folder(FolderName)
@@ -182,7 +182,7 @@ Sub ExtractTicketID_locates_a_RITM_in_the_mail_item()
         Dim MailItem As Outlook.MailItem
         Dim Subject As String: Subject = scenario(i, 2)
         Dim Body As String: Body = scenario(i, 3)
-        Set MailItem = CreateMailItem("first.last@csmc.org", Subject, Body)
+        Set MailItem = CreateMailItem("first.last@domain.tld", Subject, Body)
         
         'act
         actual = ExtractTicketID(MailItem)
