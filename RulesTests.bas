@@ -4,9 +4,11 @@ Sub Run_All_Tests()
     FindInFolders_Tests
     Find_or_Create_Folder_Tests
     AddToFavorites_Tests
+    ExtractTicketID_Tests
     
 End Sub
 
+' --------------------------------------------------------------------------------
 Sub FindInFolders_Tests()
 
     Const FUNCTION_NAME = "FindInFolders"
@@ -57,6 +59,7 @@ Sub FindInFolders_returns_nothing_if_folder_does_not_exist()
     
 End Sub
 
+' --------------------------------------------------------------------------------
 Sub Find_or_Create_Folder_Tests()
 
     Const FUNCTION_NAME = "Find_or_Create_Folder"
@@ -107,6 +110,7 @@ Sub Find_or_Create_Folder_returns_a_new_folder()
     
 End Sub
 
+' --------------------------------------------------------------------------------
 Sub AddToFavorites_Tests()
 
     Const FUNCTION_NAME = "AddToFavorites"
@@ -137,6 +141,7 @@ Sub AddToFavorites_creates_a_folder_favorite()
     
 End Sub
 
+' --------------------------------------------------------------------------------
 Sub ExtractTicketID_Tests()
 
     Const FUNCTION_NAME = "ExtractTicketID"
@@ -197,6 +202,7 @@ Sub ExtractTicketID_locates_a_RITM_in_the_mail_item()
         
 End Sub
 
+' --------------------------------------------------------------------------------
 Sub ProcessMailItem_Tests()
 
     Const FUNCTION_NAME = "ProcessMailItem"
@@ -218,7 +224,7 @@ Sub ProcessMailItem_moves_a_message_with_a_RITM_in_the_subject_to_the_correspond
     Set Inbox = Application.GetNamespace("MAPI").GetDefaultFolder(olFolderInbox)
     
     Dim Dummy As Outlook.MailItem
-    Set Dummy = CreateMailItem("first.last@csmc.org", "ticket " & RITM & " was assigned to you.", "lorem ipsum")
+    Set Dummy = CreateMailItem("first.last@domain.tld", "ticket " & RITM & " was assigned to you.", "lorem ipsum")
     
     'Dim Target As Outlook.MAPIFolder
     'Set Target = Find_or_Create_Folder(RITM)
@@ -250,7 +256,7 @@ Sub ProcessMailItem_moves_a_message_with_a_RITM_in_the_body_to_the_corresponding
     Set Inbox = Application.GetNamespace("MAPI").GetDefaultFolder(olFolderInbox)
     
     Dim Dummy As Outlook.MailItem
-    Set Dummy = CreateMailItem("first.last@csmc.org", "lorem ipsum", RITM)
+    Set Dummy = CreateMailItem("first.last@domain.tld", "lorem ipsum", RITM)
     
     Dim Target As Outlook.MAPIFolder
     Set Target = Find_or_Create_Folder(RITM)
